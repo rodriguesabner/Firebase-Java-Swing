@@ -1,20 +1,27 @@
 apply plugin: 'java'
 apply plugin: 'jacoco'
 apply plugin: 'application'
+apply plugin: 'com.github.johnrengelman.shadow'
 
+group = 'com.kingaspx'
 
-mainClassName = 'com.kingaspx.firebase.Main'
+mainClassName = 'com.kingaspx.FirebaseProjects.Main'
 
 repositories {
     jcenter()
 }
 
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:6.1.0'
+    }
+}
+
 dependencies {
-    testImplementation 'junit:junit:4.12'
-    
-    //SDK Firebase Admin
-    implementation 'com.google.firebase:firebase-admin:6.11.0'
-    
-    //Other libs...
-    implementation files('libs/KControls.jar', 'libs/AbsoluteLayout.jar')
+    testImplementation     'junit:junit:4.13'
+    implementation 'com.google.firebase:firebase-admin:7.0.1'
+    implementation 'com.formdev:flatlaf:0.45'
 }
